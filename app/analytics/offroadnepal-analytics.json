@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "offroadnepal",
+  "private_key_id": "ff1f661d37274e2641a02652eb764a9839182e63",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCXe9GQvR/3mJkW\n1rBcUyH/h2rzaBAuIr00ZXWpLjx3sSHVTA7si9nBBJsODKC2gXoWRAMNZfe/lRQV\n5l6CoR/RomGWHdlwuDDdlgm+21iUbpqXYJm2Jo2xIkW93sGBhRCOZ3pt5i3D+raq\nq6VlMoXhufJLg5OpfmjaopvZ8es7iHTWowHH8LcGfFRDfrbni02DY8dT1wfhe2Nv\nrgdyD9X9zKj5WOEGWZDwhDlfgcovXWiCnAZwcItIes17KhxSjx+WlyyVyGMp1Iqs\n3/zd2zm9Tcs9uT10a2iYMqmfty8NTgtW+9wfqVrZ4CZODE7LqdLDCsu50Ja+BcuI\nXHivjSVNAgMBAAECggEAE+ftbfusS7j9xQaJPlieSxnccAfouGdQPaZng8fTolbg\nf0rzWxo1jyuvxHTcWZ9CD9L4I7aWi9JnRUl0ee36ZG3WLQfXHvzVTwj8Vtw0E61F\nG0dSa6E9VV2PlJfFDeQSfOQULoTk1rAHeP39SgMNnM/2iv3LVaaK2NAtcsJbiwL7\np3JcxJDq0hc5jvnegQAgmZb/lNPiR9E6G5I8nR/Pz3S2XR1n0aGmAHUv0POHX0Hs\n46MwTb7CuLLDSXB2utqNrzmSRm6h7OEustSKrJNws+wnb0O0ePTs3S3FAfkHe4iS\nw5ZiRa/H8hlw6ycX7N44Zpuuygp7WQrFJVvyK6lEcQKBgQDOaXljQtNTCkGgRWIu\npLcjYwEjHaXQQoV7Jmbba5u3t65d2c6J0vklFO8/3xFpDdmN/1xcOURjApAXg8CA\n5AOS/5RdQwXDxnMDOlCNK7GkCLpkN5VjSOPp25bbkrxa2J4fCEGeQBghHmqWh5ab\ns9VY0o1dgvYqqfKOxk8el72tZwKBgQC74DOZy7GQIMp34Xj+13/QbAUl8OMfuurp\nNrgBmHRyesb2xBw1OQpYiF+UIc+cnnHGm/p28LC4o3M2ftn3XWKC5+NBeItwytqV\n9BG10OVLxCBxB3k7psqAshEZFjGZsDoFZDcJE/Fexjz+GbEtzZH4qpJvWiE/Yn0d\nmfL4IL6zKwKBgQCvpBLWAyw9sjGLxt64IBNyujFihzzsjV52H4RQ3C2CVHu8grV8\nlBjLlBfN+uwev9lLOmuGUni945VnXQZ25w+fi3ndLkX+hKSjr4CR0Ad2NLMeyimF\ndaXy/pdNOnyqtT8/2s+zcIjXzcEXXEMtNQarcWc3llQQk9LB6T+0IZ0WqwKBgCdO\n8XzsMWqGcdZDRp2LWSKydyFJFTw+T4gb+sPasgKBzb8zqPM5zABaCCVmLZoHTKbR\nW8Ym9dKr4B82y0QGNeZNvi6kmggvaSyWtF3mJxODJYaAmczxSM1EdG9bRWVyibE3\nFoy/r3C06W4A0iFTMYdlqN3DbdFlOehHnZ5su3mhAoGBAIm3++h8aYfPodojCWCz\n89MH7FD4+RF1rKvephCq6p2FRyl7bYiQtZyDT64esyEhOER2XOf0lsBYfFuDVyvF\nZ2O/Z/EZlLYN8PS++pgyx3tRwiQXfORGVrl02Jz07ThuLKnZW1jWOY69URHpZEoS\nOz1ETSmVt8UuQxKyoqMEiwzl\n-----END PRIVATE KEY-----\n",
+  "client_email": "google-analytics@offroadnepal.iam.gserviceaccount.com",
+  "client_id": "109912753307037762205",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/google-analytics%40offroadnepal.iam.gserviceaccount.com"
+}
