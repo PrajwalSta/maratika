@@ -66,20 +66,9 @@ About us
                 </div>
                 <div class="aboutus-description">
                   <b>Description :</b><br/>
-                  @switch(app()->getLocale())
-                      @case('es')
-                      {!!  $aboutus->aboutus_es_description !!}  
-                      @break
-
-                      @case('de')
-                      {!!  $aboutus->aboutus_ger_description !!} 
-                      @break
-                      @case('fr')
-                      {!!  $aboutus->aboutus_fr_description !!}
-                      @break 
-                      @default
+                  
                       {!!  $aboutus->aboutus_description !!}
-                @endswitch
+               
                 </div>
 
                 <div class="img-featured">

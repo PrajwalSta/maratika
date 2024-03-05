@@ -14,7 +14,7 @@ use App\Model\Whyus;
 use App\Model\AboutUs;
 use App\Model\TravelInfo;
 use App\Model\BookingContent;
-use App\Model\Rental;
+use App\Facility;
 use App\Contactus;
 use function is_null;
 use App\Model\Blog;
@@ -41,8 +41,7 @@ class routesController extends Controller
         $gallery=cmsGallery::all();
         $offroad=offroadTour::all();
         
-        $onroad=onroadTour::all();
-
+      
         
                   $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::months(12));
                 //   $active = Analytics::getActiveUsers();
@@ -60,7 +59,7 @@ class routesController extends Controller
 
       
         
-        return view('./cms.dashboard',compact('offroad','gallery','user','onroad'),["totalvisitors"=>$totalvisitors,"totalpageViews"=>$totalpageViews]);
+        return view('./cms.dashboard',compact('offroad','gallery','user'),["totalvisitors"=>$totalvisitors,"totalpageViews"=>$totalpageViews]);
        
     }
 
@@ -68,21 +67,22 @@ class routesController extends Controller
 
     {
         
-        // App::setlocale('es');
+        
         $rooms=offroadTour::paginate(3);
        
         $slider=Slider::all();
         $gallery=cmsGallery::paginate(6);
         $contactdetails=Contactus::all();
-        $booking=
+       
         $aboutus=AboutUs::all();
         $blogs=Blog::paginate(3);
 
          $whyus=Whyus::all();
+         $facility=Facility::all();
          
          
 
-        return view('./frontend.index',compact('rooms','whyus','slider','gallery','blogs','contactdetails','aboutus'));
+        return view('./frontend.index',compact('rooms','whyus','slider','gallery','blogs','contactdetails','aboutus','facility'));
        
        
     }
@@ -98,10 +98,9 @@ class routesController extends Controller
         $room=offroadTour::paginate(3);
         $rooms=offroadTour::find($id);
         $keyinfo= offroadTour::find($id)->offroadkeyinfo;
-        return view('./frontend.roomdetails',compact('rooms','keyinfo','room'));
+        $itinerary= offroadTour::find($id)->myitinarary;
+        return view('./frontend.roomdetails',compact('rooms','keyinfo','room','itinerary'));
     }
-
-    
    
     // public function projects(){
     //     $project=Project::all();
@@ -127,6 +126,7 @@ class routesController extends Controller
       //  dd($blogs);
         return view('./frontend.blogs',compact('blogs'));
     }
+  
    
     public function readMoreBlog(Request $request,$bloglinks){
         $blogs=Blog::all();
@@ -142,17 +142,20 @@ class routesController extends Controller
     }
        // booking
     public function Booking(){
-         $offroadall=offroadTour::all();
+       
+       $rooms=offroadTour::all();
+      
+         
          
 
 
-         return view('./frontend.booking',compact('offroadall'));
+         return view('./frontend.booking',compact('rooms'));
     }
-    
+  
     public function BookingStepOne(Request $request){
        
-        $offroadall=offroadTour::all();
-         $onroadall=onroadTour::all();
+        $rooms=offroadTour::all();
+        
 
          $price =cookie('price', $request->price, 10);
           $noofperson =cookie('noOfPersons', $request->noofperson, 10);
@@ -177,9 +180,9 @@ class routesController extends Controller
 
         
    }
-   public function Rental(){
-        $rental=Rental::all();
-        return view('./frontend.rental',compact('rental'));
+   public function facility(){
+        $facility=Facility::all();
+        return view('./frontend.facility',compact('facility'));
 
    }
     public function Gallery(){

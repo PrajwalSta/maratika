@@ -163,7 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         // MaddHatter\LaravelFullcalendar\ServiceProvider::class,
-        
+      
        
       
 
@@ -231,7 +231,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'I
         
     ],
 

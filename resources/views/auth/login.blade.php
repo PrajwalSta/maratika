@@ -1,32 +1,28 @@
 @extends('frontend/layouts.master')
 @section('title')
-Login || OffroadNepal 
+Login || Maratika Norling Hotel
     
 @endsection
-@section('header-link')
 
-@endsection
-@section('body')
+@section('content')
 
     <!--================ Start banner section =================-->
-    <section class="hero-wrap" style="background-image: url('../../assets/img/chitwan.jpg');">
-        <div class="overlay"></div>
-        <div class="container hero-container">
-          <div class="row no-gutters slider-text align-items-end justify-content-center">
-            <div class="col-md-9 ftco-animate pb-5 text-center">
-             <p class="breadcrumbs"><span class="mr-2"><a href="{{route('homepage')}}" style="color:#E3051A">Home 
-                <i class="fa fa-chevron-right"></i></a></span> <span>Login<i class="fa fa-chevron-right"></i></span></p>
-             <h1 class="mb-0 bread">Login</h1>
+    <section class="inner-banner-wrap">
+        <div class="inner-baner-container" style="background-image: url('assets/frontend/images/gallery.jpg');">
+           <div class="container">
+              <div class="inner-banner-content">
+                 <h1 class="inner-title">login</h1>
+              </div>
            </div>
-         </div>
-       </div>
-      </section>
+        </div>
+        <div class="inner-shape"></div>
+     </section>
   <section class="ftco-section mb-5 m-5 p-5" >
     <div class="container">
         <div class="row d-flex justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center"> <h1 class="mb-3 bread">Login(Only for admin)</h1></div>
+                <div class="card-header text-center"> <h2 class="inner-title">Login(Only for admin)</h></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

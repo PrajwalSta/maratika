@@ -9,6 +9,7 @@ use App\Http\Controllers\CMS\BlogController;
 use App\Http\Controllers\CMS\SliderController;
 use App\Http\Controllers\CMS\cmsController;
 
+
 use App\Contactus;
 
 use Spatie\Analytics\Period;
@@ -48,7 +49,7 @@ Route::get('/clear', function() {
     return "Cache and config is cleared";
 });
 
-
+Route::post('/save-info','PaymentController@saveInfo')->name('save_info');
 
 
 Route::get('/rentals','RoutesController@Rental')->name('rental');
@@ -62,11 +63,10 @@ Route::get('rooms','RoutesController@ViewRooms')->name('rooms');
 Route::get('/roomdetails/{id}','RoutesController@DetailRooms')->name('roomdetails');
 
 Route::get('/offroadtour/{tourlinks}/{id}','RoutesController@offroadtourDetails')->name('offroadtour_details');
-Route::get('/offoadtour/{tourlinks}/{id}','RoutesController@offroadtourDetails')->name('onroadtour_details');
+
 
 
 Route::get('/blogs','RoutesController@blogs')->name('blogs');
-//Route::get('/blogs','RoutesController@ViewBlog')->name('blogs');
 Route::get('/blog-detail','RoutesController@blogs')->name('readmoreblog');
 
 //slider
@@ -80,6 +80,7 @@ Route::get('/principalmessage','RoutesController@PrincipalMessage');
 // booking form
 
 Route::get('/booking','RoutesController@Booking' )->name('booking');
+
 Route::post('/booking/stepone/','RoutesController@BookingStepOne')->name('booking-stepone');
 
 // here contact form contorller sends mail to the destination.
@@ -142,6 +143,7 @@ Route::group(['middleware'=>['auth','admin']],function(){
     Route::get('/edit-whyus/{id}','CMS\WhyUsController@edit')->name('edit-whyus');
     Route::put('/update-whyus/{id}/','CMS\WhyUsController@storeorupdate')->name('update-whyus');
     Route::delete('/delete-whyus/{id}','CMS\WhyUsController@destroy')->name('delete-whyus');
+    
 
      //   Travel Info
     Route::get('ViewTravelInfo','CMS\TravelInfoController@index')->name('travelinfo');
@@ -184,24 +186,6 @@ Route::group(['middleware'=>['auth','admin']],function(){
     Route::put('/update-itinerary/{id}/{tourid}','CMS\ItineraryController@update');
     Route::delete('/delete-offroaditinerary/{id}','CMS\ItineraryController@destroy');
 
-// onroad Itinerary
-     Route::get('/viewitinerary/{id}','CMS\OnroadItineraryController@index')->name('onroadItinerary');
-     Route::post('/save-onroadItinerary','CMS\OnroadItineraryController@store')->name('saveonroadItinerary');
-     Route::get('/edit-onroadItinerary/{id}/{tourid}','CMS\OnroadItineraryController@edit');
-     Route::put('/update-onroaditinerary/{id}/{tourid}','CMS\OnroadItineraryController@update');
-     Route::delete('/delete-onroaditinerary/{id}','CMS\OnroadItineraryController@destroy');
-
-
-     
-     // For onroadTours
-     Route::get('/onroadtour','CMS\onroadTourController@index')->name('onroadtour');
-     Route::post('/save-onroadtour','CMS\onroadTourController@store');
-     Route::get('/edit-onroadtouor/{id}','CMS\onroadTourController@edit');
-     Route::put('/update-onroadtour/{id}','CMS\onroadTourController@update');
-     Route::delete('/delete-onroadtour/{id}','CMS\onroadTourController@destroy');
-     Route::get('/viewItinerary/{id}','CMS\OffroadTourController@index')->name('onroad-itinerary');
-
-
     //  for paypal integration
     Route::get('payment', 'PaymentController@index');
     Route::post('charge', 'PaymentController@charge');
@@ -217,14 +201,7 @@ Route::group(['middleware'=>['auth','admin']],function(){
 
     Route::delete('/delete-offroadEvents/{id}','CMS\EventController@destroy');
 
-     // onroad Calendar Events
-     Route::get('/viewonroadEvents/{id}','CMS\OnRoadEventsController@index')->name('onroadEvents');
-     Route::post('/save-onroadEvents','CMS\OnRoadEventsController@store')->name('saveonroadEvents');
-     Route::get('/edit-onroadEvents/{id}/{tourid}','CMS\OnRoadEventsController@edit');
-     Route::put('/update-onroadevents/{id}/{tourid}','CMS\OnRoadEventsController@update');
-     Route::put('/markbooked-onroadevents/{id}/{tourid}','CMS\OnRoadEventsController@MarkAsBooked')->name('onRoadEventsMarkBooked');
-
-     Route::delete('/delete-onroadEvents/{id}','CMS\OnRoadEventsController@destroy');
+    
      
       //  for offroadkeyInfo
      
@@ -235,13 +212,6 @@ Route::group(['middleware'=>['auth','admin']],function(){
      Route::delete('/delete-offroadkeyinfo/{id}','CMS\OffroadKeyInfoController@destroy');
 
 
-      //  for onroadkeyInfo
-     
-      Route::get('/viewOnroadKeyInfo/{id}','CMS\OnroadKeyInfoController@index')->name('onroadkeyInfo');
-      Route::post('/save-OnroadKeyInfo','CMS\OnroadKeyInfoController@store')->name('saveOnroadKeyInfo');
-      Route::get('/edit-OnroadKeyInfo/{id}','CMS\OnroadKeyInfoController@edit');
-      Route::put('/update-Onroadkeyinfo/{id}','CMS\OnroadKeyInfoController@update');
-      Route::delete('/delete-Onroadkeyinfo/{id}','CMS\OnroadKeyInfoController@destroy');
 
 
     //   for Section of Booking
@@ -251,12 +221,12 @@ Route::group(['middleware'=>['auth','admin']],function(){
     Route::put('/update-section/{id}/','CMS\SectionController@storeorupdate')->name('update-bookingsection');
     Route::delete('/delete-bookingsection/{id}','CMS\SectionController@storeorupdate')->name('delete-bookingsection');
 
- // Rental
-        Route::get('/cmsrental','CMS\RentalController@index')->name('cmsrental');
-        Route::post('/save-rental','CMS\RentalController@storeorupdate')->name('store-rental');
-        Route::get('/edit-rental/{id}','CMS\RentalController@edit')->name('edit-rental');
-        Route::put('/update-rental/{id}/','CMS\RentalController@storeorupdate')->name('update-rental');
-        Route::delete('/delete-rental/{id}','CMS\RentalController@destroy')->name('delete-rental');
+ // Facility
+        Route::get('/cmsfacility','CMS\FacilityController@index')->name('cmsfacility');
+        Route::post('/save-facility','CMS\FacilityController@storeorupdate')->name('store-facility');
+        Route::get('/edit-facility/{id}','CMS\FacilityController@edit')->name('edit-facility');
+        Route::put('/update-facility/{id}/','CMS\FacilityController@storeorupdate')->name('update-facility');
+        Route::delete('/delete-facility/{id}','CMS\FacilityController@destroy')->name('delete-facility');
         
     // Contact Us
   Route::get('/showContactDetails','ContactUsController@show')->name('admin.showcontact');

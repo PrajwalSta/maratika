@@ -91,6 +91,7 @@
               <p>Why Us</p>
             </a>
           </li>
+         
          {{-- <li class="{{ 'viewtravelInfo'==request()->path() ? 'active':''}}">
             <a href="{{route('travelinfo')}}">
               <i class="now-ui-icons ui-1_bell-53"></i>
@@ -123,26 +124,26 @@
               </p>
             </a>--}}
         </li>
-        <li class="{{ 'cms-blogs'==request()->path() ? 'active':''}}">
+       {{-- <li class="{{ 'cms-blogs'==request()->path() ? 'active':''}}">
             <a href="{{route('cms-blogs')}}">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Blog</p>
             </a>
-          </li>
-        {{--<li class="{{ 'cmsrental'==request()->path() ? 'active':''}}">
-            <a href="{{route('cmsrental')}}">
+          </li>--}}
+        <li class="{{ 'cmsfacility'==request()->path() ? 'active':''}}">
+            <a href="{{route('cmsfacility')}}">
               <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Rental</p>
+              <p>Facility</p>
             </a>
-          </li> 
-        <li class="{{'bookingcontent-section'==request()->path() ? 'active':''}}">
+          </li>
+      {{--  <li class="{{'bookingcontent-section'==request()->path() ? 'active':''}}">
           <a href="{{route('bookingcontent-section')}}">
             <i class="now-ui-icons text_caps-small"></i>
             <p>Sections
             </p>
           </a>
-      </li>--}}
-          
+      </li>
+         --}}
       <li class="{{ 'role-register'==request()->path() ? 'active':''}}">
         <a href="./role-register">
           <i class="now-ui-icons users_single-02"></i>

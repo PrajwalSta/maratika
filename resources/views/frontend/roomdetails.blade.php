@@ -88,26 +88,13 @@ Room details || Maratika Hotel
                             <div class="single-tour-gallery">
                                <h3>GALLERY / PHOTOS</h3>
                                <div class="single-tour-slider">
+                                 @foreach ($itinerary as $itinerary)
                                   <div class="single-tour-item">
                                      <figure class="feature-image">
-                                        <img src="{{url('assets/frontend/images/slider1.jpg')}}" alt="">
+                                        <img src="../../uploads/offroaditinerary/{{ $itinerary->itinerary_image }}" alt="">
                                      </figure>
                                   </div>
-                                  <div class="single-tour-item">
-                                     <figure class="feature-image">
-                                        <img src="{{url('assets/frontend/images/slider1.jpg')}}" alt="">
-                                     </figure>
-                                  </div>
-                                  <div class="single-tour-item">
-                                     <figure class="feature-image">
-                                        <img src="{{url('assets/frontend/images/slider1.jpg')}}" alt="">
-                                     </figure>
-                                  </div>
-                                  <div class="single-tour-item">
-                                     <figure class="feature-image">
-                                        <img src="{{url('assets/frontend/images/slider1.jpg')}}" alt="">
-                                     </figure>
-                                  </div>
+                                  @endforeach
                                </div>
                             </div>
                          </div>
@@ -121,7 +108,8 @@ Room details || Maratika Hotel
                             </div>
                             <div class="widget-bg booking-form-wrap">
                                <h4 class="bg-title">Booking</h4>
-                               <form class="booking-form">
+                               <form class="booking-form"method="POST" action="{{route('booked-package')}}" >
+                                 @csrf
                                   <div class="row">
                                      <div class="col-sm-12">
                                         <div class="form-group">
@@ -140,44 +128,18 @@ Room details || Maratika Hotel
                                      </div>
                                      <div class="col-sm-12">
                                         <div class="form-group">
-                                           <input class="input-date-picker" type="text" name="s" autocomplete="off" readonly="readonly" placeholder="Date">
+                                           <input class="input-date-picker" type="text" name="s" autocomplete="off" readonly="readonly" placeholder="Start-Date">
                                         </div>
                                      </div>
                                      <div class="col-sm-12">
-                                        <h4 class="">Add Options</h4>
-                                     </div>
-                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                           <label class="checkbox-list">
-                                              <input type="checkbox" name="s">
-                                              <span class="custom-checkbox"></span>
-                                              Tour guide
-                                           </label>
-                                        </div>
-                                     </div>
-                                     
-                                     <div class="col-sm-6">
-                                        <div class="form-group">
-                                           <label class="checkbox-list">
-                                              <input type="checkbox" name="s">
-                                              <span class="custom-checkbox"></span>
-                                              Dinner
-                                           </label>
-                                        </div>
-                                     </div>
-                                     <div class="col-sm-6">
-                                        <div class="form-group">
-                                           <label class="checkbox-list">
-                                              <input type="checkbox" name="s">
-                                              <span class="custom-checkbox"></span>
-                                              Bike rent
-                                           </label>
+                                           <input class="input-date-picker" type="text" name="s" autocomplete="off" readonly="readonly" placeholder="End-Date">
                                         </div>
                                      </div>
                                      <div class="col-sm-12">
                                         <div class="form-group submit-btn">
                                            
-                                           <a href="{{('booking')}}">
+                                           <a href="">
                                              <input  type="submit" name="submit" value="Boook Now">
                                            </a>
                                         </div>
@@ -257,7 +219,7 @@ Room details || Maratika Hotel
                                         <a href="{{ route('roomdetails',['title' => $room->title,'id' => $room->id,]) }}">{!!Str::words($room->tour_description, 25, '<br/>Read More...')!!}</a>
                                     </p>
                                      <div class="btn-wrap">
-                                       <a href="" class="button-text width-6">Book Now<i class="fas fa-arrow-right"></i></a>
+                                       <a href="{{route('booking')}}" class="button-text width-6">Book Now<i class="fas fa-arrow-right"></i></a>
                                        
                                      </div>
                                    </div>

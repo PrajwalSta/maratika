@@ -224,101 +224,30 @@
 				<div class="col-lg-8 offset-lg-2">
 				   <h3>Our Facilities</h3>
 				   
-				   <p>Norling Maratika Hotel provides all services you need.</p>
+				   <p> Maratika Norling Hotel provides all services you need.</p>
 				</div>
 			 </div>
 		  </div>
 		  <div class="activity-inner row">
+			@foreach ($facility as $facility)
 			 <div class="col-lg-2 col-md-4 col-sm-6">
+				
 				<div class="activity-item">
 				   <div class="activity-icon">
 					  <a href="#">
-						 <img src="{{url('assets/frontend/images/icon6.png')}}" alt="">
+						 <img  src="../../uploads/facility/{{$facility->image}}" alt="">
 					  </a>
 				   </div>
 				   <div class="activity-content">
 					  <h4>
-						 <a href="#">Adventure</a>
+						 <a href="#"> {{  $facility->title }}</a>
 					  </h4>
-					  <p>15 Destination</p>
+					  <p>  {!! Str::words($facility->description,5,'.')!!}</p>
 				   </div>
 				</div>
+				
 			 </div>
-			 <div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="activity-item">
-				   <div class="activity-icon">
-					  <a href="#">
-						 <img src="{{url('assets/frontend/images/icon10.png')}}" alt="">
-					  </a>
-				   </div>
-				   <div class="activity-content">
-					  <h4>
-						 <a href="#">Trekking</a>
-					  </h4>
-					  <p>12 Destination</p>
-				   </div>
-				</div>
-			 </div>
-			 <div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="activity-item">
-				   <div class="activity-icon">
-					  <a href="#">
-						 <img src="{{url('assets/frontend/images/icon9.png')}}" alt="">
-					  </a>
-				   </div>
-				   <div class="activity-content">
-					  <h4>
-						 <a href="#">Camp Fire</a>
-					  </h4>
-					  <p>7 Destination</p>
-				   </div>
-				</div>
-			 </div>
-			 <div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="activity-item">
-				   <div class="activity-icon">
-					  <a href="#">
-						 <img src="{{url('assets/frontend/images/icon8.png')}}" alt="">
-					  </a>
-				   </div>
-				   <div class="activity-content">
-					  <h4>
-						 <a href="#">Off Road</a>
-					  </h4>
-					  <p>15 Destination</p>
-				   </div>
-				</div>
-			 </div>
-			 <div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="activity-item">
-				   <div class="activity-icon">
-					  <a href="#">
-						 <img src="{{url('assets/frontend/images/icon7.png')}}" alt="">
-					  </a>
-				   </div>
-				   <div class="activity-content">
-					  <h4>
-						 <a href="#">Camping</a>
-					  </h4>
-					  <p>13 Destination</p>
-				   </div>
-				</div>
-			 </div>
-			 <div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="activity-item">
-				   <div class="activity-icon">
-					  <a href="#">
-						 <img src="{{url('assets/frontend/images/icon11.png')}}" alt="">
-					  </a>
-				   </div>
-				   <div class="activity-content">
-					  <h4>
-						 <a href="#">Exploring</a>
-					  </h4>
-					  <p>25 Destination</p>
-				   </div>
-				</div>
-			 </div>
+			 @endforeach
 		  </div>
 	   </div>
 	</section>

@@ -60,7 +60,7 @@ Room details || Maratika Hotel
 								 <a href="{{ route('roomdetails',['title' => $room->title,'id' => $room->id,]) }}">{!!Str::words($room->tour_description, 25, '<br/>Read More...')!!}</a>
 							</p>
 							 <div class="btn-wrap">
-								<a href="#" class="button-text width-6">Book Now<i class="fas fa-arrow-right"></i></a>
+								<a href="{{route('booking')}}" class="button-text width-6">Book Now<i class="fas fa-arrow-right"></i></a>
 								
 							 </div>
 						  </div>

@@ -23,12 +23,12 @@ class ItineraryController extends Controller
            
              $offroaditinerary=Itinerary::where('itinerary_title',$request->input('itinerary'))->first();
             $offroaditinerary->es_itinerary_title=$request->input('es_itinerary_title');
-            $offroaditinerary->es_itinerary_description=$request->input('es_itinerary_description');
+          
              $offroaditinerary->update();
         }else{
             $offroaditinerary=new Itinerary();
             $offroaditinerary->itinerary_title=$request->input('itinerary_title');
-            $offroaditinerary->itinerary_description=$request->input('itinerary_description');
+           
             $offroaditinerary->tour_id=$request->input('tour_id');
     
             if ($request->hasfile('itinerary_image')) { 
@@ -63,28 +63,28 @@ class ItineraryController extends Controller
                                 $offroaditinerary->tour_id=$tourid;
 
                 $offroaditinerary->es_itinerary_title=$request->input('itinerary_title');
-                $offroaditinerary->es_itinerary_description=$request->input('itinerary_description');
+              
                 $offroaditinerary->update();
             }elseif($request->input('germanlang')){
                 $offroaditinerary=Itinerary::find($id);
                                 $offroaditinerary->tour_id=$tourid;
 
                 $offroaditinerary->ger_itinerary_title=$request->input('itinerary_title');
-                $offroaditinerary->ger_itinerary_description=$request->input('itinerary_description');
+               
                 $offroaditinerary->update();
             }elseif($request->input('frenchlang')){
                 $offroaditinerary=Itinerary::find($id);
                                 $offroaditinerary->tour_id=$tourid;
 
                 $offroaditinerary->fr_itinerary_title=$request->input('itinerary_title');
-                $offroaditinerary->fr_itinerary_description=$request->input('itinerary_description');
+               
                 $offroaditinerary->update();
             }else{
                 $offroaditinerary=Itinerary::find($id);
                 $offroaditinerary->tour_id=$tourid;
         
                 $offroaditinerary->itinerary_title=$request->input('itinerary_title');
-                $offroaditinerary->itinerary_description=$request->input('itinerary_description');
+                
                 $offroaditinerary_edited_img=$request->edit_itineraryimage;
                 
               
