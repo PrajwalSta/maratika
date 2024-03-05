@@ -2,8 +2,22 @@
 
 @section('title')
 Booking ||Maratika
-    
+
 @endsection
+
+@if(Session::has('message_sent'))
+<div class="alert alert-success" role="alert">
+    <script>
+
+
+        Swal.fire(
+  'Your Booking has been sent Successfully',
+  'We Will Contact You as Soon As Posible!',
+  'success'
+)
+        </script>
+        </div>
+        @endif
 
 @section('content')
 <section class="inner-banner-wrap">
@@ -34,172 +48,92 @@ Booking ||Maratika
           </div>
        </div>
        <div class="row">
+
           <div class="col-lg-8 right-sidebar">
+
+            <form action="{{route('proceed-payment')}}" method="post">
+                @csrf
              <!-- step one form html start -->
              <div class="booking-form-wrap">
-                <div class="booking-content">
-                   <div class="form-title">
-                      <span>1</span>
-                      <h3>Your Details</h3>
-                   </div>
-                   <div class="row">
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                            <label>First name*</label>
-                            <input type="text" class="form-control" name="firstname_booking">
-                         </div>
-                      </div>
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                            <label>Last name*</label>
-                            <input type="text" class="form-control" name="lastname_booking">
-                         </div>
-                      </div>
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                            <label>Email*</label>
-                            <input type="email" class="form-control" name="email_booking">
-                         </div>
-                      </div>
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                            <label>Confirm Email*</label>
-                            <input type="email" class="form-control" name="email_booking">
-                         </div>
-                      </div>
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                            <label>Phone*</label>
-                            <input type="text" class="form-control" name="lastname_booking">
-                         </div>
-                      </div>
-                   </div>
+               @if (1)
+               <div class="booking-content">
+                <div class="form-title">
+                   <span>1</span>
+                   <h3>Your Details</h3>
                 </div>
+                <div class="row">
+                   <div class="col-sm-6">
+                      <div class="form-group">
+                         <label>First name*</label>
+                         <input type="text" class="form-control" name="full_name" required>
+                      </div>
+                   </div>
+                   <div class="col-sm-6">
+                      <div class="form-group">
+                         <label>Email*</label>
+                         <input type="email" class="form-control" name="email" required>
+                      </div>
+                   </div>
+                   <div class="col-sm-6">
+                      <div class="form-group">
+                         <label>Phone*</label>
+                         <input type="text" class="form-control" name="contact" required>
+                      </div>
+                   </div>
+                   <div class="col-sm-6">
+                    <div class="form-group">
+                       <label>Date of Booking*</label>
+                       <input type="date" class="form-control" name="date" required>
+                    </div>
+                 </div>
+
+                 <div class="col-sm-6">
+                    <div class="form-group">
+                       <label>Number of Person*</label>
+                       <input type="number" class="form-control" name="number_of_person" id="number_of_person" onchange="calculate()" required>
+                    </div>
+                 </div>
+                </div>
+             </div>
+               @endif
+
+
                 <div class="booking-content">
                    <div class="form-title">
                       <span>2</span>
-                      <h3>Payment Information</h3>
-                   </div>
-                   <div class="row">
-                      <div class="col-12">
-                         <div class="form-group">
-                            <label>Name on card*</label>
-                            <input type="text" class="form-control" name="firstname_booking">
-                         </div>
-                      </div>
-                      <div class="col-12">
-                         <div class="row align-items-center">
-                            <div class="col-sm-6">
-                               <div class="form-group">
-                                  <label>Card number*</label>
-                                  <input type="text" id="card_number" name="card_number" class="form-control">
-                               </div>
-                            </div>
-                            <div class="col-sm-6">
-                               <img src="assets/images/cards.png" alt="Cards">
-                            </div>
-                         </div>
-                      </div>
-                      <div class="col-12">
-                         <div class="row">
-                            <div class="col-md-6">
-                               <label>Expiration date*</label>
-                               <div class="row">
-                                  <div class="col-md-6">
-                                     <div class="form-group">
-                                        <input type="text" id="expire_month" name="expire_month" class="form-control" placeholder="MM">
-                                     </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                     <div class="form-group">
-                                        <input type="text" id="expire_year" name="expire_year" class="form-control" placeholder="Year">
-                                     </div>
-                                  </div>
-                               </div>
-                            </div>
-                            <div class="col-md-6">
-                               <div class="form-group">
-                                  <label>Security code*</label>
-                                  <div class="row">
-                                     <div class="col-4">
-                                        <div class="form-group">
-                                           <input type="text" id="ccv" name="ccv" class="form-control" placeholder="CCV">
-                                        </div>
-                                     </div>
-                                     <div class="col-8">
-                                        <img src="assets/images/icon_ccv.gif" alt="ccv"><small>Last 3 digits</small>
-                                     </div>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                   <div class="info-content">
-                      <h4>Or checkout with Paypal</h4>
-                      <p>Lorem ipsum dolor sit amet, vim id accusata sensibus, id ridens quaeque qui. Ne qui vocent ornatus molestie, reque fierent dissentiunt mel ea.</p>
-                      <a href="#">
-                         <img src="assets/images/paypal_bt.png" alt="">
-                      </a>
-                   </div>
-                </div>
-                <div class="booking-content">
-                   <div class="form-title">
-                      <span>3</span>
-                      <h3>Billing Address</h3>
+                      <h3>Address</h3>
                    </div>
                    <div class="row">
                       <div class="col-sm-12">
                          <div class="form-group">
                             <label>Country*</label>
-                            <select class="form-control" name="country" id="country">
-                               <option value="" selected="">Select your country</option>
-                               <option value="Europe">Europe</option>
-                               <option value="United states">United states</option>
-                               <option value="Asia">Asia</option>
-                            </select>
+                            <input type="text" name="country" required>
                          </div>
                       </div>
                    </div>
                    <div class="row">
                       <div class="col-sm-6">
                          <div class="form-group">
-                            <label>Street line 1*</label>
-                            <input type="text" name="street_1">
+                            <label>City</label>
+                            <input type="text" name="city" required>
                          </div>
                       </div>
-                      <div class="col-sm-6">
-                         <div class="form-group">
-                            <label>Street line 2</label>
-                            <input type="text" name="street_2">
+                         <div class="col-md-3 col-sm-6">
+                            <div class="form-group">
+                               <label>Postal code*</label>
+                               <input type="text" name="postal_code" required>
+                            </div>
                          </div>
-                      </div>
-                   </div>
-                   <div class="row">
-                      <div class="col-md-6 col-sm-12">
-                         <div class="form-group">
-                            <label>City*</label>
-                            <input type="text" name="city_booking">
-                         </div>
-                      </div>
-                      <div class="col-md-3 col-sm-6">
-                         <div class="form-group">
-                            <label>State*</label>
-                            <input type="text" name="state_booking">
-                         </div>
-                      </div>
-                      <div class="col-md-3 col-sm-6">
-                         <div class="form-group">
-                            <label>Postal code*</label>
-                            <input type="text" name="postal_code">
-                         </div>
-                      </div>
+
                       <div class="col-md-12 col-sm-12">
                          <div class="form-group">
                             <label>Additional Information</label>
-                            <textarea rows="6" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
+                            <textarea rows="6" placeholder="Any Prior Information" name="info"></textarea>
                          </div>
                       </div>
+                      <input type="hidden" value="{{$room_detail->id}}" name="room_id"/>
+                      <input type="hidden" value="{{$room_detail->amount}}" name="amount"/>
+
                    </div>
                    <!--End row -->
                 </div>
@@ -212,47 +146,73 @@ Booking ||Maratika
                          I accept terms and conditions and general policy.
                       </label>
                    </div>
-                   <a href="#" class="button-primary">Book Now</a>
+                   <input type="submit" class="button-primary" value="Save & Proceed">
                 </div>
              </div>
+    </form>
              <!-- step one form html end -->
           </div>
+
+
           <div class="col-lg-4">
              <aside class="sidebar">
                 <div class="widget-bg widget-table-summary">
                    <h4 class="bg-title">Summary</h4>
                    <table>
                       <tbody>
-                         <tr>
+                        <tr>
                             <td>
-                               <strong>Packages cost </strong>
+                               <strong>Room type </strong>
                             </td>
                             <td class="text-right">
-                               $300
+                               {{$room_detail->title}}
                             </td>
                          </tr>
                          <tr>
                             <td>
-                               <strong>Dedicated tour guide</strong>
+                                <strong>Number of Person</strong>
+                             </td>
+                             <td class="text-right">
+                                    <span class="totalperson">1</span>
+                             </td>
+                         </tr>
+
+                         <tr>
+                            <td>
+                               <strong>Room cost </strong><br/>
+                               {{__('Your Total')}}:&nbsp;&nbsp;&nbsp;&euro;
                             </td>
+
                             <td class="text-right">
-                               $34
+                                <span><span class="percost" data-price="{{ $room_detail->amount }}"></span>{{ $room_detail->amount }}/person</span><br/>
+                                Rs.<b><b class="totalamt"></b>
+
+
+
                             </td>
                          </tr>
                          <tr>
                             <td>
-                               <strong>Insurance</strong>
+                               <strong>Your Name</strong>
                             </td>
                             <td class="text-right">
-                               $34
+                                <?php echo Cookie::get('name')?>
                             </td>
                          </tr>
                          <tr>
                             <td>
-                               <strong>tax</strong>
+                               <strong>Email</strong>
                             </td>
                             <td class="text-right">
-                               13%
+                                <?php echo Cookie::get('email')?>
+                            </td>
+                         </tr>
+                         <tr>
+                            <td>
+                               <strong>Contact Number</strong>
+                            </td>
+                            <td class="text-right">
+                                <?php echo Cookie::get('contact')?>
                             </td>
                          </tr>
                          <tr class="total">
@@ -260,12 +220,26 @@ Booking ||Maratika
                                <strong>Total cost</strong>
                             </td>
                             <td class="text-right">
-                               <strong>$368</strong>
+                               <strong class="finalcost"></strong>
                             </td>
                          </tr>
                       </tbody>
                    </table>
                 </div>
+                <script>
+                    function calculate(){
+                        var percost=document.querySelector('.percost').dataset.price;
+                        var number_of_person=document.getElementById('number_of_person').value;
+                        var totalcost=document.querySelector('.totalamt');
+                        var totalcostwithVat=document.querySelector('.finalcost');
+                        var totalperson=document.querySelector('.totalperson');
+                        totalAmt=parseInt(percost)*number_of_person;
+                        totalperson.innerHTML=number_of_person;
+                        totalcost.innerHTML=totalAmt;
+                        totalcostwithVat.innerHTML=totalAmt;
+
+                        }
+                   </script>
                 <div class="widget-bg widget-support-wrap">
                    <div class="icon">
                       <i class="fas fa-phone-volume"></i>
@@ -281,4 +255,6 @@ Booking ||Maratika
        </div>
     </div>
  </div>
+
+
 @endsection

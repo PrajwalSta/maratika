@@ -10,16 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class BookingMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $traveldetails,$det;
+    public $booking;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($traveldetails,$det)
+    public function __construct($booking)
     {
-        $this->traveldetails=$traveldetails;
-        $this->det=$det;
+        $this->booking=$booking;
     }
 
     /**
@@ -29,6 +28,6 @@ class BookingMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Tour Booking Order from OffroadNepal Website ')->view('emails.BookingMail');
+        return $this->subject('Room Booking Order from Maratika Website ')->view('emails.BookingMail');
     }
 }

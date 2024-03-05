@@ -1,7 +1,7 @@
 @extends('frontend/layouts.master')
 @section('title')
 Room details || Maratika Hotel
-    
+
 @endsection
 @section('content')
 
@@ -10,7 +10,7 @@ Room details || Maratika Hotel
                 <div class="inner-baner-container" style="background-image: url(../../uploads/offroadtour/{{ $rooms->tour_image }}); ">
                    <div class="container">
                       <div class="inner-banner-content">
-                        
+
                       </div>
                    </div>
                 </div>
@@ -46,15 +46,15 @@ Room details || Maratika Hotel
                                   <li class="nav-item">
                                      <a class="nav-link" id="program-tab" data-toggle="tab" href="#program" role="tab" aria-controls="program" aria-selected="false">Details</a>
                                   </li>
-                                 
-                                  
+
+
                                </ul>
                                <div class="tab-content" id="myTabContent">
                                   <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                                      <div class="overview-content">
                                         <p>{!! $rooms->tour_description !!}</p>
-                                        
-                                       
+
+
                                      </div>
                                   </div>
                                   <div class="tab-pane" id="program" role="tabpanel" aria-labelledby="program-tab">
@@ -63,16 +63,16 @@ Room details || Maratika Hotel
                                          @foreach($keyinfo as  $keyinfo)
                                            <tr>
                                                <td>
-   
+
                            <td><i class="fa {{ $keyinfo->icon }}" aria-hidden="true"></i>
                               {{ $keyinfo->key_info }}
                          </td>
-   
+
                          <td>
-                             
+
                            <i class="fa-solid fa-wifi"> {{ $keyinfo->key_info_value }}</i>
-                            
-                
+
+
                            </td>
                                          @endforeach
                                          </table>
@@ -80,9 +80,9 @@ Room details || Maratika Hotel
                                   </div>
                                   <div class="tab-pane" id="review" role="tabpanel" aria-labelledby="review-tab">
                                      <!-- review comment html -->
-                                    
+
                                   </div>
-                                 
+
                                </div>
                             </div>
                             <div class="single-tour-gallery">
@@ -120,70 +120,44 @@ Room details || Maratika Hotel
                                </h5>
                             </div>
                             <div class="widget-bg booking-form-wrap">
-                               <h4 class="bg-title">Booking</h4>
-                               <form class="booking-form">
-                                  <div class="row">
-                                     <div class="col-sm-12">
-                                        <div class="form-group">
-                                           <input name="name_booking" type="text" placeholder="Full Name">
-                                        </div>
-                                     </div>
-                                     <div class="col-sm-12">
-                                        <div class="form-group">
-                                           <input name="email_booking" type="text" placeholder="Email">
-                                        </div>
-                                     </div>
-                                     <div class="col-sm-12">
-                                        <div class="form-group">
-                                           <input name="phone_booking" type="text" placeholder="Number">
-                                        </div>
-                                     </div>
-                                     <div class="col-sm-12">
-                                        <div class="form-group">
-                                           <input class="input-date-picker" type="text" name="s" autocomplete="off" readonly="readonly" placeholder="Date">
-                                        </div>
-                                     </div>
-                                     <div class="col-sm-12">
-                                        <h4 class="">Add Options</h4>
-                                     </div>
-                                     <div class="col-sm-6">
-                                        <div class="form-group">
-                                           <label class="checkbox-list">
-                                              <input type="checkbox" name="s">
-                                              <span class="custom-checkbox"></span>
-                                              Tour guide
-                                           </label>
-                                        </div>
-                                     </div>
-                                     
-                                     <div class="col-sm-6">
-                                        <div class="form-group">
-                                           <label class="checkbox-list">
-                                              <input type="checkbox" name="s">
-                                              <span class="custom-checkbox"></span>
-                                              Dinner
-                                           </label>
-                                        </div>
-                                     </div>
-                                     <div class="col-sm-6">
-                                        <div class="form-group">
-                                           <label class="checkbox-list">
-                                              <input type="checkbox" name="s">
-                                              <span class="custom-checkbox"></span>
-                                              Bike rent
-                                           </label>
-                                        </div>
-                                     </div>
-                                     <div class="col-sm-12">
-                                        <div class="form-group submit-btn">
-                                           
-                                           <a href="{{('booking')}}">
-                                             <input  type="submit" name="submit" value="Boook Now">
-                                           </a>
-                                        </div>
-                                     </div>
-                                  </div>
-                               </form>
+                                    <h4 class="bg-title">Booking</h4>
+                                    <form class="booking-form" method="POST" action="{{route('proceed-booking')}}">
+                                        @csrf
+                                       <div class="row">
+                                          <div class="col-sm-12">
+                                             <div class="form-group">
+                                                <input name="name" type="text" placeholder="Full Name">
+                                             </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                             <div class="form-group">
+                                                <input name="email" type="text" placeholder="Email">
+                                             </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                             <div class="form-group">
+                                                <input name="contact" type="text" placeholder="Contact Number">
+                                             </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                             <div class="form-group">
+                                                <input class="input-date-picker" type="text" name="date" autocomplete="off" readonly="readonly" placeholder="Date">
+                                             </div>
+                                          </div>
+                                         <input type="hidden" value={{$rooms->id}}  name="room_id"/>
+                                          <div class="col-sm-12">
+                                             <div class="form-group submit-btn">
+                                                <input type="submit" name="submit">
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </form>
+                                 </div>
+                               <h4 class="bg-title">Bookinddfg</h4>
+                               <div class="btn-wrap">
+                                <a href="{{ route('booking')}}" class="button-text width-6">Book Now<i class="fas fa-arrow-right"></i></a>
+
+                              </div>
                             </div>
                             <div class="travel-package-content text-center" style="background-image: url(assets/images/img11.jpg);">
                                <h5>MORE PACKAGES</h5>
@@ -258,7 +232,7 @@ Room details || Maratika Hotel
                                     </p>
                                      <div class="btn-wrap">
                                        <a href="" class="button-text width-6">Book Now<i class="fas fa-arrow-right"></i></a>
-                                       
+
                                      </div>
                                    </div>
                                  </div>
@@ -270,5 +244,5 @@ Room details || Maratika Hotel
                   </div>
                </section>
              </div>
-            <!-- subscribe section html start --> 
+            <!-- subscribe section html start -->
      @endsection
