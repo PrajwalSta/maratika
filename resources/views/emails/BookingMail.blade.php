@@ -6,26 +6,21 @@
     <title>Booking Tour Package</title>
 </head>
 <body>
-    <h1>Booking Message from OffroadNepal</h1>
-    <h4>Travel Details:</h4>
-    
-    <p>Destination Name:{{$traveldetails['DestinationName']}}</p>
-    <p>Arrival Date:{{$traveldetails['ArrivalDate']}}</p>
-    <p>Departure Date: {{$traveldetails['DepartureDate']}}</p>
-    <p>No. of Persons: {{$traveldetails['No.of.persons']}}</p>
+    <h1>Booking Message from Maratika</h1>
+    <h4> Details:</h4>
+     <?php $room_type=App\Model\offroadTour::where('id',$booking->room_id)->first()->title; ?>
+    <p>Room Type:{{$room_type}}</p>
+    <p>No. of Persons: {{$booking->number_of_person}}</p>
+    <p>Booking Date:{{$booking->date}}</p>
+    <p>Total Price:Rs {{$booking->total}}</p>
+    <p>Payment_Status:{{$booking->payment_mode}}</p>
     <h4>Personal Details:</h4>
-    @foreach ($det as $det)
-        
-        <p>Name:{{$det['Name']}}</p>
-        <p>Age:{{$det['Age']}}</p>
-        <p>Email:{{$det['Email']}}</p>
-        <p>Phone Number:{{$det['Phone']}}</p>
-        <p>Country:{{$det['Country']}}</p>
-        <p>City:{{$det['City']}}</p>
-        <p>Travel Requirements :{{$det['Description']}}</p>
- 
-    @endforeach
-   
-    
+        <p>Name:{{ $booking->full_name }}</p>
+        <p>Email: {{ $booking->email}}</p>
+        <p>Contact Number:{{ $booking->contact}}</p>
+        <p>Country:{{ $booking->country}}</p>
+        <p>City:{{$booking->city}}</p>
+        <p>Additional Information :{{$booking->add_info}}</p>
+
 </body>
 </html>

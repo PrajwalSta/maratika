@@ -9,6 +9,9 @@ use App\Http\Controllers\CMS\BlogController;
 use App\Http\Controllers\CMS\SliderController;
 use App\Http\Controllers\CMS\cmsController;
 
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\EsewaController;
+
 
 use App\Contactus;
 
@@ -29,6 +32,16 @@ Route::get('/', function () {
     return redirect()->route('homepage/{en}}', app()->getLocale());
 })->name('homepage');
 
+
+// Payment Information
+Route::get('/save-information','PaymentController@saveBookingInfo');
+Route::get('/payment','PaymentController@index');
+
+
+Route::any('esewa/success','EsewaController@success')->name('esewa.success');
+Route::any('esewa/fail','EsewaController@fail')->name('esewa.fail');
+
+Route::get('payment/fail',[PaymentController::class,'fail'])->name('payment.fail');
 // Route::group(['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}']], function () {
 //     Route::get('/', 'RoutesController@index')->name('homepage');
 
@@ -81,7 +94,9 @@ Route::get('/principalmessage','RoutesController@PrincipalMessage');
 
 Route::get('/booking','RoutesController@Booking' )->name('booking');
 
-Route::post('/booking/stepone/','RoutesController@BookingStepOne')->name('booking-stepone');
+Route::post('/proceed-booking','RoutesController@ProceedBooking')->name('proceed-booking');
+Route::post('/proceed-payment','RoutesController@ProceedPayment')->name('proceed-payment');
+
 
 // here contact form contorller sends mail to the destination.
 Route::post('/bookedpackage','ContactFormController@BookPackage')->name('booked-package');
@@ -108,7 +123,7 @@ Auth::routes();
 Route::group(['middleware'=>['auth','admin']],function(){
     // for cms dashboard
     Route::get('/dashboard','RoutesController@dashboard')->name('dashboard');
-    
+
     Route::get('/role-register','Admin\DashboardController@registered');
     Route::get('/role-register/{id}','Admin\DashboardController@registeredEdit');
     Route::put('/role-registered-update/{id}','Admin\DashboardController@registeredUpdate');
@@ -120,15 +135,15 @@ Route::group(['middleware'=>['auth','admin']],function(){
     Route::delete('/about-Us/{id}','Admin\Aboutus@DeleteAbout');
     Route::get('/role-register','Admin\DashboardController@registered');
 
-    
 
 
 
 
-    
+
+
     // cms frontend-----------------------cms frontend===================
     // =================================================================
-    
+
      // =================================================================
      // for notice
      Route::get('/notice','CMS\noticeController@index')->name('notice');
@@ -136,8 +151,8 @@ Route::group(['middleware'=>['auth','admin']],function(){
      Route::get('/edit-cmsnotice/{id}','CMS\noticeController@edit');
      Route::put('/cms-updatenotice/{id}','CMS\noticeController@update');
      Route::delete('/delete-cmsnotice/{id}','CMS\noticeController@destroy');
-    
-     // why us 
+
+     // why us
     Route::get('/whyus','CMS\WhyUsController@index')->name('whyus');
     Route::post('/save-whyus','CMS\WhyUsController@storeorupdate')->name('store-whyus');
     Route::get('/edit-whyus/{id}','CMS\WhyUsController@edit')->name('edit-whyus');
@@ -151,8 +166,8 @@ Route::group(['middleware'=>['auth','admin']],function(){
     Route::get('editTravelInfo/{id}','CMS\TravelInfoController@view')->name('edittravelinfo');
     Route::put('updateTravelInfo/{id}','CMS\TravelInfoController@storeOrUpdate')->name('updatetravelinfo');
     Route::delete('deleteTravelInfo/{id}','CMS\TravelInfoController@delete')->name('deletetravelinfo');
-    
-     // aboutCompany us 
+
+     // aboutCompany us
     Route::get('/aboutus','CMS\AboutUsController@index')->name('aboutus');
     Route::post('/save-aboutus','CMS\AboutUsController@storeorupdate')->name('store-aboutus');
     Route::get('/edit-aboutus/{id}','CMS\AboutUsController@edit')->name('edit-aboutus');
@@ -204,7 +219,7 @@ Route::group(['middleware'=>['auth','admin']],function(){
     
      
       //  for offroadkeyInfo
-     
+
      Route::get('/viewoffroadKeyInfo/{id}','CMS\OffroadKeyInfoController@index')->name('offroadkeyInfo');
      Route::post('/save-offroadKeyInfo','CMS\OffroadKeyInfoController@store')->name('saveoffroadKeyInfo');
      Route::get('/edit-offroadKeyInfo/{id}','CMS\OffroadKeyInfoController@edit');
@@ -251,8 +266,8 @@ Route::group(['middleware'=>['auth','admin']],function(){
     Route::get('/edit-ambasadorform/{id}','AmbassadorController@formedit')->name('edit-ambasadorform');
     Route::put('/update-ambasadorform/{id}/','AmbassadorController@formstoreorupdate')->name('update-ambasadorform');
     Route::delete('/delete-ambasadorform/{id}','AmbassadorController@formdestroy')->name('delete-ambasadorform');
-    
-    
+
+
 
     //blogs
     Route::get('/cms-blogs','CMS\BlogController@index')->name('cms-blogs');
